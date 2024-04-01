@@ -3,7 +3,7 @@ import { Searchbar } from "react-native-paper";
 
 export default function SearchBar() {
    return (
-      <View className="p-2 bg-green-50">
+      <View className="p-2 bg-transparent bg-green-50">
          <Searchbar className="bg-white border border-green-900/50 p-0 h-11 justify-center items-center"></Searchbar>
       </View>
    );

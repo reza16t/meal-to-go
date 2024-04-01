@@ -1,57 +1,25 @@
-import { FlatList, View } from "react-native";
+import { ActivityIndicator, FlatList, View } from "react-native";
 import CardItem from "./CardItem";
+import UseRestaurant from "../Services/UseRestaurant";
 
-const cardItem = [
-   {
-      name: "zuin cafe",
-      rating: 3,
-      icon: "",
-      location: "1658 Market street, san francisco",
-      photos:
-         "https://images.pexels.com/photos/1279330/pexels-photo-1279330.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-      imagePath: "@expo/assets/pexels-photo-1279330.webp",
-      address: "",
-   },
-   {
-      name: "zuin cafe1",
-      rating: 3,
-      location: "1658 Market street, san francisco",
-      imageUrl:
-         "https://images.pexels.com/photos/1279330/pexels-photo-1279330.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-      imagePath: "@expo/assets/pexels-photo-1279330.webp",
-   },
-   {
-      name: "zuin cafe2",
-      rating: 3,
-      location: "1658 Market street, san francisco",
-      imageUrl:
-         "https://images.pexels.com/photos/1279330/pexels-photo-1279330.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-      imagePath: "@expo/assets/pexels-photo-1279330.webp",
-   },
-   {
-      name: "zuin cafe3",
-      rating: 3,
-      location: "1658 Market street, san francisco",
-      imageUrl:
-         "https://images.pexels.com/photos/1279330/pexels-photo-1279330.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-      imagePath: "@expo/assets/pexels-photo-1279330.webp",
-   },
-   {
-      name: "zuin cafe4",
-      rating: 3,
-      location: "1658 Market street, san francisco",
-      imageUrl:
-         "https://images.pexels.com/photos/1279330/pexels-photo-1279330.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-      imagePath: "@expo/assets/pexels-photo-1279330.webp",
-   },
-];
 export default function Card() {
+   const { Mocks, isLoading } = UseRestaurant();
+
+   // console.log(Mocks);
    return (
       <View className="bg-green-50 p-2 flex-1 ">
+         {isLoading && (
+            <ActivityIndicator
+               size={100}
+               className="absolute mt-[-50]   bg-white opacity-70  h-screen w-screen z-10"
+            ></ActivityIndicator>
+         )}
          <FlatList
-            data={cardItem}
+            showsVerticalScrollIndicator={false}
+            showsHorizontalScrollIndicator={false}
+            data={Mocks}
             renderItem={CardItem}
-            keyExtractor={(cardItem) => cardItem.name}
+            keyExtractor={(el) => el.name}
          ></FlatList>
       </View>
    );

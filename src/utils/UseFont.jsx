@@ -6,7 +6,7 @@ import {
    useFonts as useLato,
    Lato_400Regular_Italic,
 } from "@expo-google-fonts/lato";
-export async function UseFont() {
+export function UseFont({ children }) {
    const [oswaldLoaded] = useOswald({
       Oswald_400Regular,
       Lato_400Regular_Italic,
@@ -15,6 +15,6 @@ export async function UseFont() {
       Oswald_400Regular,
       Lato_400Regular_Italic,
    });
-
-   return oswaldLoaded, latoLoaded;
+   if (!oswaldLoaded && !latoLoaded) return null;
+   return <>{children}</>;
 }
