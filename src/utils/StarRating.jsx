@@ -1,10 +1,11 @@
 import { View } from "react-native";
 import { Path, Svg } from "react-native-svg";
 export default function StarRating({ rating }) {
+   // console.log(rating);
    return (
       <View className="flex flex-row pb-2">
          {Array.from(Array(5).keys()).map((el) =>
-            el < rating.toFixed(0) ? (
+            el < +rating.toFixed(0) ? (
                <Svg
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 500 500"

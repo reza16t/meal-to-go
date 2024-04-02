@@ -10,7 +10,7 @@ export const Icon = styled.Image`
 export default function CardItem({ item }) {
    // console.log(item.isOpenNow, item.isClosedTemporarily);
    return (
-      <View className="bg-white m-2 h-80 rounded-md  shadow-md shadow-black p-4">
+      <View className="bg-white m-2 rounded-md  shadow-md shadow-black p-4">
          <Image
             // eslint-disable-next-line no-undef
             source={require("../../assets/pexels-photo-1279330.webp")}

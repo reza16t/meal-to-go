@@ -9,39 +9,49 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { NativeWindStyleSheet } from "nativewind";
 import { UseFont } from "./src/utils/UseFont";
+import { LocationProvider } from "./src/Services/LocationContext";
 
 NativeWindStyleSheet.setOutput({
    default: "native",
 });
 
 const Tab = createBottomTabNavigator();
-const queryClient = new QueryClient();
+const queryClient = new QueryClient({
+   defaultOptions: {
+      queries: {
+         // staleTime: 60 * 1000,
+         staleTime: 10,
+      },
+   },
+});
 
 export default function App() {
    return (
       <>
          <SafeAreaView className="flex-1 ">
             <QueryClientProvider client={queryClient}>
-               <UseFont>
-                  <NavigationContainer>
-                     <Tab.Navigator
-                        screenOptions={({ route }) => ({
-                           tabBarIcon: ({ color, size }) =>
-                              TabBarIcon(color, size, route),
-                           tabBarActiveTintColor: "#99ff11",
-                           tabBarInactiveTintColor: "gray",
-                           headerShown: false,
-                        })}
-                     >
-                        <Tab.Screen name="Home" component={Home} />
-                        <Tab.Screen name="Map" component={Map} />
-                        <Tab.Screen name="Settings" component={Setting} />
-                     </Tab.Navigator>
-                  </NavigationContainer>
-               </UseFont>
-               {Platform.OS === "web" && (
-                  <ReactQueryDevtools initialIsOpen={true} />
-               )}
+               <LocationProvider>
+                  <UseFont>
+                     <NavigationContainer>
+                        <Tab.Navigator
+                           screenOptions={({ route }) => ({
+                              tabBarIcon: ({ color, size }) =>
+                                 TabBarIcon(color, size, route),
+                              tabBarActiveTintColor: "#99ff11",
+                              tabBarInactiveTintColor: "gray",
+                              headerShown: false,
+                           })}
+                        >
+                           <Tab.Screen name="Home" component={Home} />
+                           <Tab.Screen name="Map" component={Map} />
+                           <Tab.Screen name="Settings" component={Setting} />
+                        </Tab.Navigator>
+                     </NavigationContainer>
+                  </UseFont>
+                  {Platform.OS === "web" && (
+                     <ReactQueryDevtools initialIsOpen={true} />
+                  )}
+               </LocationProvider>
             </QueryClientProvider>
          </SafeAreaView>
          <StatusBar style="auto" />

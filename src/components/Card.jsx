@@ -1,13 +1,15 @@
 import { ActivityIndicator, FlatList, View } from "react-native";
 import CardItem from "./CardItem";
 import UseRestaurant from "../Services/UseRestaurant";
+import { contextLocation } from "../Services/LocationContext";
 
 export default function Card() {
-   const { Mocks, isLoading } = UseRestaurant();
+   const { Location } = contextLocation();
+   const { Mocks, isLoading } = UseRestaurant(Location);
 
    // console.log(Mocks);
    return (
-      <View className="bg-green-50 p-2 flex-1 ">
+      <View className="bg-green-50 p-2 pt-12 flex-1">
          {isLoading && (
             <ActivityIndicator
                size={100}
@@ -19,6 +21,7 @@ export default function Card() {
             showsHorizontalScrollIndicator={false}
             data={Mocks}
             renderItem={CardItem}
+            extraData={CardItem}
             keyExtractor={(el) => el.name}
          ></FlatList>
       </View>

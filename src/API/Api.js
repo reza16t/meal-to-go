@@ -6,6 +6,7 @@ export const restaurantsRequest = async (
    location = "37.7749295,-122.4194155",
 ) => {
    try {
+      // console.log(location);
       const mock = await camelize(mocks[location]?.results);
       const mappedResults = mock?.map((restaurant) => {
          return {
@@ -21,13 +22,18 @@ export const restaurantsRequest = async (
    }
 };
 
-export async function LocationAPI(searchTerm = "san francisco") {
+export const LocationAPI = async (searchTerm) => {
    try {
+      const key = [];
+      Object.keys(locations).map((val) => key.push(val));
       const result = await locations[searchTerm];
-      const { geometry } = camelize(result);
-      const { lat, lng } = geometry.location;
-      return [{ lat, lng }, result];
+      if (result) {
+         const { geometry } = camelize(result.results[0]);
+         const { lat, lng } = geometry.location;
+         return { location: { lat, lng }, geometry, key };
+      }
+      return { key };
    } catch (error) {
-      console.log(error);
+      console.log("Location not found!");
    }
-}
+};
