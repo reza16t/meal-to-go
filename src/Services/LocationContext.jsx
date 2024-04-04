@@ -10,7 +10,7 @@ function LocationProvider({ children }) {
    const { data } = UseLocation(KeyWord);
    useEffect(() => {
       if (data?.location) {
-         setLocation(`${data?.location.lat},${data?.location.lng}`);
+         setLocation(data.location);
       }
    }, [data]);
 

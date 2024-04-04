@@ -30,7 +30,7 @@ export const LocationAPI = async (searchTerm) => {
       if (result) {
          const { geometry } = camelize(result.results[0]);
          const { lat, lng } = geometry.location;
-         return { location: { lat, lng }, geometry, key };
+         return { location: { lat, lng, viewport: geometry.viewport }, key };
       }
       return { key };
    } catch (error) {

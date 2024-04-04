@@ -14,7 +14,7 @@ const Suggestions = styled.View`
    justify-content: center;
 `;
 
-export default function SearchBar() {
+export default function MapSearchBar() {
    const { OnSubmit, data, KeyWord } = contextLocation();
    const [SearchTerm, setSearchTerm] = useState(KeyWord);
    useEffect(() => {
@@ -30,6 +30,8 @@ export default function SearchBar() {
       <View className="p-2 bg-transparent top-0 w-full absolute">
          <Searchbar
             className="bg-white border border-green-900/50 p-0 h-11 rounded-none "
+            icon={"map"}
+            iconColor="green"
             placeholder="search for location"
             value={SearchTerm}
             onChangeText={(val) => setSearchTerm(val)}
