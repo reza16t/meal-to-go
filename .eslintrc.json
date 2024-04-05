@@ -24,7 +24,7 @@
       "quotes": ["error", "double"],
       "semi": ["error", "always"],
       "spaced-comment": "off",
-      "no-console": "warn",
+      // "no-console": "warn",
       "consistent-return": "off",
       "func-names": "off",
       "object-shorthand": "off",

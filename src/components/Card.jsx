@@ -1,7 +1,7 @@
 import { ActivityIndicator, FlatList, Pressable, View } from "react-native";
 import CardItem from "./CardItem";
-import UseRestaurant from "../Services/UseRestaurant";
-import { contextLocation } from "../Services/LocationContext";
+import UseRestaurant from "../Services/query/UseRestaurant";
+import { contextLocation } from "../Services/context/LocationContext";
 import { useNavigation } from "@react-navigation/native";
 
 export default function Card() {

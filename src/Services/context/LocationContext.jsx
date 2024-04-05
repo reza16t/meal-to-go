@@ -1,6 +1,6 @@
 import { createContext, useState, useContext, useEffect } from "react";
 // import { LocationAPI } from "../API/Api";
-import { UseLocation } from "./UseLocation";
+import { UseLocation } from "../query/UseLocation";
 
 const LocationContext = createContext();
 

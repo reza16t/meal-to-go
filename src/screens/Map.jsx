@@ -1,8 +1,8 @@
 import { View } from "react-native";
 import MapView, { Marker } from "react-native-maps";
 import MapSearchBar from "../components/MapSearchbar";
-import { contextLocation } from "../Services/LocationContext";
-import UseRestaurant from "../Services/UseRestaurant";
+import { contextLocation } from "../Services/context/LocationContext";
+import UseRestaurant from "../Services/query/UseRestaurant";
 import { useEffect, useState } from "react";
 import MapDetailsCard from "../components/MapDetailsCard";
 
@@ -12,8 +12,8 @@ export default function Map() {
    const { Mocks } = UseRestaurant(Location);
    const { lat, lng, viewport } = Location;
    useEffect(() => {
-      const northeastLat = viewport.northeast.lat;
-      const southwestLat = viewport.southwest.lat;
+      const northeastLat = viewport?.northeast.lat;
+      const southwestLat = viewport?.southwest.lat;
       setLatDelta(northeastLat - southwestLat);
    }, [Location]);
    return (

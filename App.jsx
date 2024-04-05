@@ -3,7 +3,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { NativeWindStyleSheet } from "nativewind";
 import { UseFont } from "./src/utils/UseFont";
-import { LocationProvider } from "./src/Services/LocationContext";
+import { LocationProvider } from "./src/Services/context/LocationContext";
 import AppNavigation from "./src/Navigation/AppNavigation";
 import { NavigationContainer } from "@react-navigation/native";
 

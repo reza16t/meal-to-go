@@ -1,7 +1,7 @@
 import { Text, View, FlatList } from "react-native";
 import { Searchbar } from "react-native-paper";
 import styled from "styled-components/native";
-import { contextLocation } from "../Services/LocationContext";
+import { contextLocation } from "../Services/context/LocationContext";
 import { useEffect, useState } from "react";
 
 const Suggestions = styled.View`

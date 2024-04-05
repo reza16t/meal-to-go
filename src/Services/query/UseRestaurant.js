@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { restaurantsRequest } from "../API/Api";
+import { restaurantsRequest } from "../../API/Api";
 
 export default function UseRestaurant(location) {
    const {
@@ -7,8 +7,8 @@ export default function UseRestaurant(location) {
       data: Mocks,
       error,
    } = useQuery({
-      queryKey: ["mocks", `${location.lat},${location.lng}`],
-      queryFn: () => restaurantsRequest(`${location.lat},${location.lng}`),
+      queryKey: ["mocks", `${location?.lat},${location.lng}`],
+      queryFn: () => restaurantsRequest(`${location?.lat},${location.lng}`),
    });
    return { isLoading, Mocks, error };
 }
