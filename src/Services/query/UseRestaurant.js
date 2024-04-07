@@ -7,8 +7,8 @@ export default function UseRestaurant(location) {
       data: Mocks,
       error,
    } = useQuery({
-      queryKey: ["mocks", `${location?.lat},${location.lng}`],
-      queryFn: () => restaurantsRequest(`${location?.lat},${location.lng}`),
+      queryKey: ["mocks", `${location?.lat},${location?.lng}`],
+      queryFn: () => restaurantsRequest(`${location?.lat},${location?.lng}`),
    });
    return { isLoading, Mocks, error };
 }

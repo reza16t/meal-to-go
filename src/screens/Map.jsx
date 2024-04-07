@@ -1,5 +1,5 @@
 import { View } from "react-native";
-import MapView, { Marker } from "react-native-maps";
+import MapView from "react-native-maps";
 import MapSearchBar from "../components/MapSearchbar";
 import { contextLocation } from "../Services/context/LocationContext";
 import UseRestaurant from "../Services/query/UseRestaurant";

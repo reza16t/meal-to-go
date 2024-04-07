@@ -1,7 +1,9 @@
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "./firebase";
 
-export const signIn = async (email, password) => {
+export const SignIn = async (email, password) => {
+   console.log(email, password);
+
    try {
       const user = await signInWithEmailAndPassword(auth, email, password);
       return user;

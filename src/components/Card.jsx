@@ -1,8 +1,9 @@
-import { ActivityIndicator, FlatList, Pressable, View } from "react-native";
+import { FlatList, Pressable, View } from "react-native";
 import CardItem from "./CardItem";
 import UseRestaurant from "../Services/query/UseRestaurant";
 import { contextLocation } from "../Services/context/LocationContext";
 import { useNavigation } from "@react-navigation/native";
+import Loader from "./Loader";
 
 export default function Card() {
    const { Location } = contextLocation();
@@ -11,12 +12,7 @@ export default function Card() {
    // console.log(Mocks);
    return (
       <View className="bg-green-50 p-2 pt-12 flex-1">
-         {isLoading && (
-            <ActivityIndicator
-               size={100}
-               className="absolute mt-[-50]   bg-white opacity-70  h-screen w-screen z-10"
-            ></ActivityIndicator>
-         )}
+         {isLoading && <Loader></Loader>}
          <FlatList
             showsVerticalScrollIndicator={false}
             showsHorizontalScrollIndicator={false}
