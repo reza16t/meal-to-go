@@ -6,6 +6,7 @@ import { UseFont } from "./src/utils/UseFont";
 import { LocationProvider } from "./src/Services/context/LocationContext";
 import AppNavigation from "./src/Navigation/AppNavigation";
 import { NavigationContainer } from "@react-navigation/native";
+
 NativeWindStyleSheet.setOutput({
    default: "native",
 });
@@ -26,9 +27,9 @@ export default function App() {
             <QueryClientProvider client={queryClient}>
                <LocationProvider>
                   <UseFont>
-                     <NativeScreenNavigationContainer>
+                     <NavigationContainer>
                         <AppNavigation></AppNavigation>
-                     </NativeScreenNavigationContainer>
+                     </NavigationContainer>
                   </UseFont>
                   {Platform.OS === "web" && (
                      <ReactQueryDevtools initialIsOpen={true} />

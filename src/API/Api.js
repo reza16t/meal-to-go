@@ -22,6 +22,7 @@ export const restaurantsRequest = async (
    }
 };
 
+
 export const LocationAPI = async (searchTerm) => {
    try {
       const key = [];

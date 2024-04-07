@@ -5,7 +5,7 @@ import Setting from "../screens/Setting";
 import HomeNavigation from "./HomeNavigation";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "../API/firebase";
-import { useState } from "react";
+import React, { useState } from "react";
 import SignIn from "../screens/SignIn";
 import Loader from "../components/Loader";
 import {
@@ -14,7 +14,6 @@ import {
 } from "@react-navigation/stack";
 import Account from "../screens/Account";
 import SignUp from "../screens/SignUp";
-
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
 

@@ -1,5 +1,9 @@
 import { Text, View } from "react-native";
 
 export default function Account() {
-   return <View></View>;
+   return (
+      <View>
+         <Text>effff</Text>
+      </View>
+   );
 }
