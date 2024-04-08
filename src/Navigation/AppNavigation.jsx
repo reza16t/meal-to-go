@@ -28,7 +28,7 @@ export default function AppNavigation() {
 
    return (
       <>
-         {IsAuth ? (
+         {true ? (
             <Tab.Navigator
                screenOptions={({ route }) => ({
                   tabBarIcon: ({ color, size }) =>

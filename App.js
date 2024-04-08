@@ -1,8 +1,7 @@
-import { Platform, SafeAreaView, StatusBar } from "react-native";
+import { SafeAreaView, StatusBar } from "react-native";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { NativeWindStyleSheet } from "nativewind";
-import { UseFont } from "./src/utils/UseFont";
+// import { UseFont } from "./src/utils/UseFont";
 import { LocationProvider } from "./src/Services/context/LocationContext";
 import AppNavigation from "./src/Navigation/AppNavigation";
 import { NavigationContainer } from "@react-navigation/native";
@@ -23,17 +22,14 @@ const queryClient = new QueryClient({
 export default function App() {
    return (
       <>
-         <SafeAreaView className="flex-1 ">
+         <SafeAreaView className="flex-1">
             <QueryClientProvider client={queryClient}>
                <LocationProvider>
-                  <UseFont>
-                     <NavigationContainer>
-                        <AppNavigation></AppNavigation>
-                     </NavigationContainer>
-                  </UseFont>
-                  {Platform.OS === "web" && (
-                     <ReactQueryDevtools initialIsOpen={true} />
-                  )}
+                  {/* <UseFont> */}
+                  <NavigationContainer>
+                     <AppNavigation></AppNavigation>
+                  </NavigationContainer>
+                  {/* </UseFont> */}
                </LocationProvider>
             </QueryClientProvider>
          </SafeAreaView>

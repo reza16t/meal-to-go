@@ -1,12 +1,8 @@
 import styled from "styled-components/native";
-const BgImage = styled.ImageBackground.attrs({
-   source: require("../../assets/home_bg.png"),
+export const BgImage = styled.ImageBackground.attrs({
+   // eslint-disable-next-line no-undef
+   source: require("../../assets/home_bg.jpg"),
 })`
    display: flex;
-   fl
-   
-   
-   
-
-   flex-wrap: nowrap;
+   flex: 1;
 `;

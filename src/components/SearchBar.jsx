@@ -27,7 +27,7 @@ export default function SearchBar() {
       return key.toLowerCase().includes(SearchTerm?.toLowerCase());
    });
    return (
-      <View className="p-2 bg-transparent top-0 w-full absolute">
+      <View className="absolute top-0 w-full bg-transparent p-2">
          <Searchbar
             className="bg-white border border-green-900/50 p-0 h-11 rounded-none "
             placeholder="search for location"
@@ -36,7 +36,7 @@ export default function SearchBar() {
             onSubmitEditing={() => OnSubmit(SearchTerm)}
          ></Searchbar>
          {keys?.length !== 0 && SearchTerm && (
-            <View className=" border-green-900/50 border border-t-0 max-h-52">
+            <View className=" max-h-52 border border-t-0 border-green-900/50">
                <FlatList
                   keyboardShouldPersistTaps={"handled"}
                   showsVerticalScrollIndicator={false}
