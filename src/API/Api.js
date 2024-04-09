@@ -2,11 +2,9 @@ import { locations } from "./locationData";
 import { mocks } from "./mock";
 import camelize from "camelize";
 
-export const restaurantsRequest = async (
-   location = "37.7749295,-122.4194155",
-) => {
+export const restaurantsRequest = async (locations) => {
    try {
-      // console.log(location);
+      const location = locations ? locations : "37.7749295,-122.4194155";
       const mock = await camelize(mocks[location]?.results);
       const mappedResults = mock?.map((restaurant) => {
          return {
@@ -21,7 +19,6 @@ export const restaurantsRequest = async (
       console.log(error);
    }
 };
-
 
 export const LocationAPI = async (searchTerm) => {
    try {
