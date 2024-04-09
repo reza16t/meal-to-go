@@ -1,10 +1,11 @@
 import { SafeAreaView, StatusBar } from "react-native";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { NativeWindStyleSheet } from "nativewind";
-// import { UseFont } from "./src/utils/UseFont";
+import { UseFont } from "./src/utils/UseFont";
 import { LocationProvider } from "./src/Services/context/LocationContext";
 import AppNavigation from "./src/Navigation/AppNavigation";
 import { NavigationContainer } from "@react-navigation/native";
+import { ToastProvider } from "react-native-toast-notifications";
 
 NativeWindStyleSheet.setOutput({
    default: "native",
@@ -25,11 +26,13 @@ export default function App() {
          <SafeAreaView className="flex-1">
             <QueryClientProvider client={queryClient}>
                <LocationProvider>
-                  {/* <UseFont> */}
-                  <NavigationContainer>
-                     <AppNavigation></AppNavigation>
-                  </NavigationContainer>
-                  {/* </UseFont> */}
+                  <ToastProvider>
+                     <UseFont>
+                        <NavigationContainer>
+                           <AppNavigation></AppNavigation>
+                        </NavigationContainer>
+                     </UseFont>
+                  </ToastProvider>
                </LocationProvider>
             </QueryClientProvider>
          </SafeAreaView>

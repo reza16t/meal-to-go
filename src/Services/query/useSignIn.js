@@ -7,11 +7,12 @@ export default function useSignIn() {
       mutationFn: ({ email, password }) => SignIn(email, password),
       onSuccess: () => {
          console.log("");
+
          queryClient.invalidateQueries({
             queryKey: ["user"],
          });
       },
-      onError: (err) => console.error(err.message),
+      // onError: (err) => console.error(err.message),
    });
    return { isPending, mutate: mutateAsync, error };
 }

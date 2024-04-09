@@ -11,7 +11,7 @@ export default function useSignUp() {
             queryKey: ["user"],
          });
       },
-      onError: (err) => console.error(err.message),
+      // onError: (err) => console.log(err.message),
    });
    return { isPending, mutate: mutateAsync, error };
 }
