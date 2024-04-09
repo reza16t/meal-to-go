@@ -10,7 +10,7 @@ export const SignIn = async (email, password) => {
       const user = await signInWithEmailAndPassword(auth, email, password);
       return user;
    } catch (error) {
-      const err = ErrorHandler(error);
+      const err = ErrorHandler(error.message);
       throw new Error(err);
    }
 };
@@ -20,7 +20,7 @@ export const SignUp = async (email, password) => {
 
       return user;
    } catch (error) {
-      const err = ErrorHandler(error);
+      const err = ErrorHandler(error.message);
       throw new Error(err);
    }
 };
