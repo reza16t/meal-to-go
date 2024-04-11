@@ -1,7 +1,6 @@
 import TabBarIcon from "../utils/TabBarIcon";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import Map from "../screens/Map";
-import Setting from "../screens/Setting";
 import HomeNavigation from "./HomeNavigation";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "../API/firebase";
@@ -14,6 +13,7 @@ import {
 } from "@react-navigation/stack";
 import Account from "../screens/Account";
 import SignUp from "../screens/SignUp";
+import SettingNavigation from "./SettingNavigation";
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
 
@@ -22,6 +22,7 @@ export default function AppNavigation() {
    // const [Loading, setLoading] = useState(true);
    onAuthStateChanged(auth, (user) => {
       setIsAuth(user);
+      console.log(user);
       // setLoading(false);
    });
    if (IsAuth == "loading") return <Loader></Loader>;
@@ -40,7 +41,7 @@ export default function AppNavigation() {
             >
                <Tab.Screen name="Home" component={HomeNavigation} />
                <Tab.Screen name="Map" component={Map} />
-               <Tab.Screen name="Settings" component={Setting} />
+               <Tab.Screen name="Settings" component={SettingNavigation} />
             </Tab.Navigator>
          ) : (
             <Stack.Navigator

@@ -1,9 +1,10 @@
 import { useState } from "react";
-import { Text, TouchableOpacity, View } from "react-native";
+import { ActivityIndicator, Text, TouchableOpacity, View } from "react-native";
 import { BgImage } from "../style/BackgroundImage";
 import styled from "styled-components/native";
 import useSignIn from "../Services/query/useSignIn";
 import { useToast } from "react-native-toast-notifications";
+import Loader from "../components/Loader";
 const ViewCard = styled.View`
    background-color: #9b9b9b94;
    border-radius: 20px;
@@ -31,6 +32,7 @@ export default function SignIn() {
    const isEmail = Email == "" || EmailRegex.test(Email);
    const isPassword = Password == "" || PasswordRegex.test(Password);
    const onSubmit = async () => {
+      if (isPending) return;
       try {
          if (Email == "") throw Error("Please enter your email!");
          if (Password == "") throw new Error("Please enter your password!");
@@ -76,7 +78,14 @@ export default function SignIn() {
                onPress={() => onSubmit()}
             >
                <View className="mt-8 h-12 w-[100%] items-center justify-center rounded-full bg-green-400">
-                  <Text className="text-lg text-white">Signin</Text>
+                  {isPending ? (
+                     <ActivityIndicator
+                        size={25}
+                        color={"white"}
+                     ></ActivityIndicator>
+                  ) : (
+                     <Text className="text-lg text-white">Signin</Text>
+                  )}
                </View>
             </TouchableOpacity>
          </ViewCard>

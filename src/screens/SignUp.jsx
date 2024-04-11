@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Text, TouchableOpacity, View } from "react-native";
+import { ActivityIndicator, Text, TouchableOpacity, View } from "react-native";
 import { BgImage } from "../style/BackgroundImage";
 import styled from "styled-components/native";
 import useSignUp from "../Services/query/useSignUp";
@@ -34,6 +34,7 @@ export default function SignUp() {
    const isPassword = Password == "" || PasswordRegex.test(Password);
    const isConfirmed = Password === ConfirmPassword;
    const onSubmit = async () => {
+      if (isPending) return;
       try {
          if (Email == "") throw Error("Please enter your email!");
          if (Password == "") throw new Error("Please enter your password!");
@@ -94,7 +95,14 @@ export default function SignUp() {
                onPress={() => onSubmit()}
             >
                <View className="mt-8 h-12 w-[100%] items-center justify-center rounded-full bg-green-400">
-                  <Text className="text-lg text-white">SignUp</Text>
+                  {isPending ? (
+                     <ActivityIndicator
+                        size={25}
+                        color={"white"}
+                     ></ActivityIndicator>
+                  ) : (
+                     <Text className="text-lg text-white">SignOut</Text>
+                  )}
                </View>
             </TouchableOpacity>
          </ViewCard>
